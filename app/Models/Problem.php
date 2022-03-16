@@ -12,5 +12,12 @@ class Problem extends Model
         'problem',
         'description',
         'type',
+        'solvers',
+        'brief'
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

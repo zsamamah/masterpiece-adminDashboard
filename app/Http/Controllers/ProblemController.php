@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Problem;
+use App\Models\Problem_user;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -42,6 +44,22 @@ class ProblemController extends Controller
             'description'=>$request['description']
         ]);
         return redirect('admin-problems');
+    }
+
+    public function one_problem($id)
+    {
+        $problem = Problem::where('id',$id)->first();
+        return response($problem,200);
+    }
+
+    public function user_problems($user_id)
+    {
+        $problems = Problem_user::where('user_id',$user_id)->select('problem_id')->get();
+        $arr=[];
+        foreach($problems as $obj){
+            array_push($arr,$obj['problem_id']);
+        }
+        return response($arr,202);
     }
 
     /**
@@ -97,5 +115,11 @@ class ProblemController extends Controller
         $problem = Problem::find($id);
         $problem->deleteOrFail();
         return redirect('admin-problems');
+    }
+
+    public function get_problems()
+    {
+        $problems = Problem::all();
+        return $problems;
     }
 }

@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CodeController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TestController;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Ui\AuthCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +22,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/user',[AuthController::class,'user']);
 });
 
-Route::group(['middleware'=>['auth:sanctum']],function(){
-    Route::get('/rooms',[RoomController::class,'index']);
-});
-
-// Route::get('/rooms',[RoomController::class,'index']);
-
-Route::post('/rooms',function(){
-    return Room::create([
-        'name'=>'test',
-        'description'=>'lorem ipsum dolom',
-        'capacity'=>'10'
-    ]);
-});
+Route::get('problems',[ProblemController::class,'get_problems']);
+Route::get('user/problems/{user}',[ProblemController::class,'user_problems']);
+Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/logout',[AuthController::class,'logout']);
+Route::post('/compile',[CodeController::class,'compile']);
+Route::post('/contact',[ContactController::class,'store']);
+Route::get('problems/{problem}',[ProblemController::class,'one_problem']);
+Route::get('tests/{test}',[TestController::class,'one_test']);
+Route::post('solve/{user}/{email}/{problem}',[TestController::class,'solved']);

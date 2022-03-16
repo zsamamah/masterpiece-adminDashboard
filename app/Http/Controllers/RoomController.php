@@ -18,7 +18,10 @@ class RoomController extends Controller
         $room = Room::all();
         return view('admin.rooms.index',compact('room'));
     }
-
+public function test()
+{
+    return response('test test test',200);
+}
     /**
      * Show the form for creating a new resource.
      *
