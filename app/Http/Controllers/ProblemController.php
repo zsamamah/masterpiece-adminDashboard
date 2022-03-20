@@ -54,12 +54,24 @@ class ProblemController extends Controller
 
     public function user_problems($user_id)
     {
-        $problems = Problem_user::where('user_id',$user_id)->select('problem_id')->get();
+        $problems_id = Problem_user::where('user_id',$user_id)->get();
         $arr=[];
-        foreach($problems as $obj){
+        foreach($problems_id as $obj){
             array_push($arr,$obj['problem_id']);
         }
-        return response($arr,202);
+        $proplems = Problem::whereNotIn('id',$arr)->get();
+        return response($proplems,202);
+    }
+
+    public function user_solved($user_id)
+    {
+        $problems_id = Problem_user::where('user_id',$user_id)->get();
+        $arr=[];
+        foreach($problems_id as $obj){
+            array_push($arr,$obj['problem_id']);
+        }
+        $proplems = Problem::whereIn('id',$arr)->get();
+        return response($proplems,202);
     }
 
     /**
