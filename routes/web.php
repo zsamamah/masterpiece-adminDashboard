@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
@@ -43,6 +44,9 @@ Route::group(['middleware' => ['auth','isAdmin']],function(){
     Route::delete('admin-rooms/{room}/delete',[RoomController::class,'destroy'])->name('delete-room');
     Route::get('admin-rooms/{room}/edit',[RoomController::class,'edit'])->name('edit-room');
     Route::put('admin-rooms/{room}',[RoomController::class,'update'])->name('store-room');
+    //contacts CRUD
+    Route::resource('admin-contacts',ContactController::class);
+
     //problems crud
     Route::resource('admin-problems',ProblemController::class);
 });

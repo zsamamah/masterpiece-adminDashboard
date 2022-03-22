@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Problem;
 use App\Models\Problem_user;
+use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -83,8 +84,9 @@ class ProblemController extends Controller
     public function show($id)
     {
         $problem = Problem::find($id);
+        $tests = Test::where('problem_id',$id)->first();
         $types=['Easy','Medium','Hard'];
-        return view('admin.problems.edit',compact('problem','types'));
+        return view('admin.problems.edit',compact('problem','tests','types'));
     }
 
     /**
@@ -111,7 +113,8 @@ class ProblemController extends Controller
         $problem->update([
             'problem'=>$request['problem'],
             'type'=>$request['type'],
-            'description'=>$request['description']
+            'description'=>$request['description'],
+            'example'=>$request['example']
         ]);
         return redirect('admin-problems');
     }

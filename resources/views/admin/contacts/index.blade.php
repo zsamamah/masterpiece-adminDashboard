@@ -16,22 +16,19 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>email</th>
-                        <th>Phone</th>
+                        <th>Email</th>
                         <th>Message</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody >
                     @foreach($contacts as $item)
                     <tr class="border">
                         <td>{{ $item->id }}</td>
-                        <td >{{ $item->name }}</td>
                         <td ><a href="mailto:{{ $item->email }}">{{ $item->email }}</a></td>
-                        <td ><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
                         <td >{{ $item->message }}</td>
                         <td>
-                            <form style="display:inline-block" action="#" method="POST">
+                            <form style="display:inline-block" action="{{ route('admin-contacts.destroy',$item->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-primary" type="submit">Delete</button>

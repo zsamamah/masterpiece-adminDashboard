@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
         <h1>Hello Admin !</h1>
-        <a href="{{ url('users-dashboard') }}">
+        <a href="{{ url('admin-users') }}">
             <div class="card">
                 <div class="card-head">
                     <h4>Users Registerd</h4>
@@ -17,8 +17,8 @@
         <a href="{{ url('services-dashboard') }}">
             <div class="card">
                 <div class="card-head">
-                    <h4>Rooms</h4>
-                    <p>{{$room->count()}}</p>
+                    <h4>Contacts</h4>
+                    <p>{{$contacts->count()}}</p>
                 </div>
             </div>
         </a>

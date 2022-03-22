@@ -13,7 +13,7 @@ class Problem extends Model
         'description',
         'type',
         'solvers',
-        'brief'
+        'example'
     ];
 
     public function users()

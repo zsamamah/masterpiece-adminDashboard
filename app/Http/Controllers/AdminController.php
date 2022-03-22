@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Problem;
 use App\Models\Room;
 use App\Models\User;
@@ -12,8 +13,8 @@ class AdminController extends Controller
     public function index()
     {
         $user = User::all();
-        $room = Room::all();
+        $contacts = Contact::all();
         $problem = Problem::all();
-        return view('admin.index',compact('user','room','problem'));
+        return view('admin.index',compact('user','contacts','problem'));
     }
 }

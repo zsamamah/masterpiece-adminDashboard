@@ -18,7 +18,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('admin-users') ? 'active' : ''; }} " href="admin-users">
+          <a class="nav-link text-white {{ Request::is('admin-users') ? 'active' : ''; }} " href="{{ url('admin-users') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -26,11 +26,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('admin-rooms') ? 'active' : ''; }}"  href="{{ url('admin-rooms') }}">
+          <a class="nav-link text-white {{ Request::is('admin-contacts') ? 'active' : ''; }}"  href="{{ url('admin-contacts') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">people</i>
             </div>
-            <span class="nav-link-text ms-1">Rooms</span>
+            <span class="nav-link-text ms-1">Contacts</span>
           </a>
         </li>
         <li class="nav-item">
