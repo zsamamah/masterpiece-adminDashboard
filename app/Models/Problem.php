@@ -20,4 +20,9 @@ class Problem extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function test()
+    {
+        $this->belongsTo(Test::class);
+    }
 }
