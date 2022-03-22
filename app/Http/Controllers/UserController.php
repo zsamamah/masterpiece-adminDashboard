@@ -71,12 +71,10 @@ class UserController extends Controller
     public function update(Request $request,$id)
     {
         $user = User::find($id);
-        // dd($request);
         $user->update([
             'name'=>$request['name'],
             'email'=>$request['email']
         ]);
-        // dd($user);
         return redirect('admin-users');
     }
 

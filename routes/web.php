@@ -21,11 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(Auth::user()){
-        if(Auth::user()->email=='admin@admin.com')
-            redirect('/dashboard');
-    }
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -34,7 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['auth','isAdmin']],function(){
     //admin dashboard
-    Route::get('/dashboard',[AdminController::class,'index']);
+    Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
     //users CRUD
     Route::get('/admin-users',[UserController::class,'index'])->name('admin-users');
     Route::get('/admin-users/{user}/edit',[UserController::class,'show'])->name('edit-user');
