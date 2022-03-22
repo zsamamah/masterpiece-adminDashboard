@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h4>Edit Result</h4>
+            <h4>Edit Problem</h4>
         </div>
         <div class="card-body">
             <form action="{{ route('admin-problems.update',$problem['id']) }}" method="POST" enctype="multipart/form-data">

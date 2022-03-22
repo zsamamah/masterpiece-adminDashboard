@@ -8,7 +8,7 @@
 @endif
     <div class="card">
         <div class="card-header">
-            <h1>Bookings Page</h1>
+            <h1>Problems Page</h1>
             <a href="admin-problems/create" class="btn btn-primary">Add New Problem!</a>
             <hr>
         </div>

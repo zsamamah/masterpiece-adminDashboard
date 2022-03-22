@@ -14,7 +14,7 @@
         </a>
         <hr>
         <br>
-        <a href="{{ url('services-dashboard') }}">
+        <a href="{{ url('admin-contacts') }}">
             <div class="card">
                 <div class="card-head">
                     <h4>Contacts</h4>
@@ -24,7 +24,7 @@
         </a>
         <hr>
         <br>
-        <a href="{{ url('bookings') }}">
+        <a href="{{ url('admin-problems') }}">
             <div class="card">
                 <div class="card-head">
                     <h4>Problems</h4>
