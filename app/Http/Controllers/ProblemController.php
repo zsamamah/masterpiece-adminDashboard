@@ -42,7 +42,22 @@ class ProblemController extends Controller
         Problem::create([
             'problem'=>$request['problem'],
             'type'=>$request['type'],
-            'description'=>$request['description']
+            'description'=>$request['description'],
+            'example'=>$request['example']
+        ]);
+        $id = Problem::all()->last()->id;
+        Test::create([
+            'problem_id'=>$id,
+            'case_1'=>$request['case_1'],
+            'sol_1'=>$request['sol_1'],
+            'case_2'=>$request['case_2'],
+            'sol_2'=>$request['sol_2'],
+            'case_3'=>$request['case_3'],
+            'sol_3'=>$request['sol_3'],
+            'case_4'=>$request['case_4'],
+            'sol_4'=>$request['sol_4'],
+            'case_5'=>$request['case_5'],
+            'sol_5'=>$request['case_5']
         ]);
         return redirect('admin-problems');
     }
@@ -115,6 +130,19 @@ class ProblemController extends Controller
             'type'=>$request['type'],
             'description'=>$request['description'],
             'example'=>$request['example']
+        ]);
+        $tests = Test::where('problem_id',$id)->first();
+        $tests->update([
+            'case_1'=>$request['case_1'],
+            'sol_1'=>$request['sol_1'],
+            'case_2'=>$request['case_2'],
+            'sol_2'=>$request['sol_2'],
+            'case_3'=>$request['case_3'],
+            'sol_3'=>$request['sol_3'],
+            'case_4'=>$request['case_4'],
+            'sol_4'=>$request['sol_4'],
+            'case_5'=>$request['case_5'],
+            'sol_5'=>$request['case_5']
         ]);
         return redirect('admin-problems');
     }

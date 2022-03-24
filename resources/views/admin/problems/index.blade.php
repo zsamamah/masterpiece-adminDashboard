@@ -18,8 +18,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Problem Name</th>
+                        <th>Solvers</th>
                         <th>Type</th>
-                        <th>Descrition</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -27,6 +28,7 @@
                     <tr class="border">
                         <td>{{ $item->id }}</td>
                         <td >{{ $item->problem }}</td>
+                        <td >{{ $item->solvers }}</td>
                         <td >{{ $item->type }}</td>
                         <td >{{ $item->description }}</td>
                         <td>
