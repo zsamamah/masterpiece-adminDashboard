@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,14 +19,26 @@ class UserController extends Controller
         return view('admin.user.index',compact('user'));
     }
 
+    public function create_user()
+    {
+        return view('admin.user.add');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        if($request['password']===$request['rpassword']){
+            User::create([
+                'name'=>$request['name'],
+                'email'=>$request['email'],
+                'password'=>Hash::make($request['password'])
+            ]);
+        }
+        return redirect('admin-users');
     }
 
     /**
@@ -75,6 +88,11 @@ class UserController extends Controller
             'name'=>$request['name'],
             'email'=>$request['email']
         ]);
+        if($request['password']!==null){
+            $user->update([
+                'password'=>Hash::make($request['password'])
+            ]);
+        }
         return redirect('admin-users');
     }
 
@@ -86,6 +104,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if($user['email']=='admin@admin.com')
+            return redirect('admin-users');
         $user->deleteOrFail();
         return redirect('admin-users');
     }

@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-header">
         <h1>Users Page</h1>
-        <a href="#" class="btn btn-primary">Add User!</a>
+        <a href="{{ route('create-user') }}" class="btn btn-primary">Add User!</a>
         <hr>
     </div>
     <div class="card-body">

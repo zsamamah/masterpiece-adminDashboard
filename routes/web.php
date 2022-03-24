@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth','isAdmin']],function(){
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
     //users CRUD
     Route::get('/admin-users',[UserController::class,'index'])->name('admin-users');
+    Route::get('/add-user',[UserController::class,'create_user'])->name('create-user');
+    Route::post('/add-user',[UserController::class,'create'])->name('save-user');
     Route::get('/admin-users/{user}/edit',[UserController::class,'show'])->name('edit-user');
     Route::put('/admin-users/{user}/edit',[UserController::class,'update'])->name('update-user');
     Route::delete('/admin-users/{user}/delete',[UserController::class,'destroy'])->name('delete-user');

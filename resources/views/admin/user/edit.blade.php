@@ -20,6 +20,11 @@
                         <input value="{{ $user->email }}" id="add-email" type="text" class="form-control" name="email">
                         <hr>
                     </div>
+                    <div class="col-md-6 mb-3" >
+                        <label for="">Password</label>
+                        <input id="new-password" type="password" class="form-control" name="password">
+                        <hr>
+                    </div>
                     <div class="col-mid-12">
                         <button type="submit" class="btn btn-primary">Edit User</button>
                     </div>
