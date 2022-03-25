@@ -23,6 +23,34 @@ class UserController extends Controller
     {
         return view('admin.user.add');
     }
+    public function changePassword($email)
+    {
+        $user = User::where('email',$email)->first();
+        if($user){
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 10);
+        $user->update([
+            'password'=>Hash::make($password)
+        ]);
+        return response('Your Password is '.$password,200);
+        }
+        else 
+        return response('Not Found',201);
+    }
+    public function changePassword2($email)
+    {
+        $user = User::where('email',$email)->first();
+        if($user){
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 10);
+        $user->update([
+            'password'=>Hash::make($password)
+        ]);
+        return view('password',compact('password'));
+        }
+        else 
+        return redirect('http://localhost:3000/register');
+    }
 
     /**
      * Show the form for creating a new resource.

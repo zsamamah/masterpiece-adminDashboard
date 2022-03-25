@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use GuzzleHttp\Middleware;
+use Illuminate\Notifications\Channels\MailChannel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/email',[MailController::class,'sendMail']);
+Route::get('/change-password/{email}',[UserController::class,'changePassword2']);
 
 Route::group(['middleware' => ['auth','isAdmin']],function(){
     //admin dashboard
