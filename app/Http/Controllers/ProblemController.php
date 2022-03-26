@@ -57,7 +57,7 @@ class ProblemController extends Controller
             'case_4'=>$request['case_4'],
             'sol_4'=>$request['sol_4'],
             'case_5'=>$request['case_5'],
-            'sol_5'=>$request['case_5']
+            'sol_5'=>$request['sol_5']
         ]);
         return redirect('admin-problems');
     }
@@ -142,7 +142,7 @@ class ProblemController extends Controller
             'case_4'=>$request['case_4'],
             'sol_4'=>$request['sol_4'],
             'case_5'=>$request['case_5'],
-            'sol_5'=>$request['case_5']
+            'sol_5'=>$request['sol_5']
         ]);
         return redirect('admin-problems');
     }

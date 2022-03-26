@@ -75,7 +75,7 @@
                         <label for="">Case 5</label>
                         <input type="text" class="form-control" name="case_5" value="{{$tests['case_5']}}">
                         <hr>
-                        <label for="">Solution 5</label>
+                        <label for="sol_5">Solution 5</label>
                         <input type="text" class="form-control" name="sol_5" value="{{$tests['sol_5']}}">
                         <hr>
                     </div>
