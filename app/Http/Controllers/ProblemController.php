@@ -90,6 +90,13 @@ class ProblemController extends Controller
         return response($proplems,202);
     }
 
+    public function count_solved($user_id)
+    {
+        $user = User::where('id',$user_id)->first();
+        $count = Problem_user::where('user_id',$user_id)->select('id')->get();
+        return count($count);
+    }
+
     /**
      * Display the specified resource.
      *

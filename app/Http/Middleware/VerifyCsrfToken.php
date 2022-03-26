@@ -20,5 +20,6 @@ class VerifyCsrfToken extends Middleware
         'http://localhost:8000/api/compile',
         'http://localhost:8000/api/solve/*',
         'http://localhost:8000/api/reset-password/*',
+        'http://localhost:8000/api/change-password/*/*',
     ];
 }

@@ -51,6 +51,23 @@ class UserController extends Controller
         else 
         return redirect('http://localhost:3000/register');
     }
+    public function changePassword3($email,$id,Request $request)
+    {
+        $user = User::where('email',$email)->first();
+        if($user->id==$id){
+            if(Hash::check($request['password'],$user->password)){
+                if($request['new_password']==$request['new_confirm']){
+                    $user->update([
+                        'password'=>Hash::make($request['new_password'])
+                    ]);
+                    return response('password changed',200);
+                }
+                else return response('New password dont match',201);
+            }
+            else return response('Wrong Password',202);
+        }
+        else return response('Invalid user',203);
+    }
 
     /**
      * Show the form for creating a new resource.
